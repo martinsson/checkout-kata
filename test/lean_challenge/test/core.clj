@@ -3,4 +3,9 @@
   (:use [midje.sweet]))
 
 (fact
-  true => false)
+  (cost "B" ) => 150
+  (cost "A" ) => 100
+  (cost "C" ) => 75)
+
+(fact "adds up the cost of all fruits in the basket"
+      (cost "A" "C" "C") => 250)
