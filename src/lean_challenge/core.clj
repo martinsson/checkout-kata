@@ -2,6 +2,5 @@
 
 (defn cost 
   ([fruit] ({"B" 150 "A" 100 "C" 75} fruit))
-  ([fruit1 fruit2] (+ (cost fruit1) (cost fruit2)))
-  ([fruit1 fruit2 & fruits] (+ (cost fruit1 fruit2) 
-                               (reduce cost 0 fruits ))))
+  ([fruit1 & more] (let [fruits (cons fruit1 more)] 
+                     (reduce + (map cost fruits )))))
