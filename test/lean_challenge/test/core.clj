@@ -17,6 +17,13 @@
       )
 (fact "buy two bananas get one for free"
       (basket-price '("b" "b")) => (cost "b"))
-
+(fact "3 pommes are 200"
+      (basket-price '("p" "p" "p")) => 200
+      (basket-price '("m" "m")) => 150
+      )
+(fact "global discounts"
+      (basket-price '("a", "a" "b", "c" "b" "b")) => 375
+      (basket-price '("a", "a" "m", "p" )) => 300
+      )
 (fact 
   (csv-to-col "a,b,c") => '("a" "b" "c"))
