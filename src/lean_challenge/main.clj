@@ -1,8 +1,8 @@
 (ns lean-challenge.main
-  (:use [lean-challenge.core]))
+  (:use [lean-challenge.core] :reload))
 
-(loop [line (read-line)]
-  (println line)
-  (if (empty? line)
-    line
-    (recur (read-line))))
+(loop [item (read-line) items []]
+  (println (basket-price (cons item items)))
+  (if (empty? item)
+    item
+    (recur (read-line) (cons item items))))

@@ -8,4 +8,4 @@
   (cost "C" ) => 75)
 
 (fact "adds up the cost of all fruits in the basket"
-      (cost "A" "C" "C") => 250)
+      (basket-price '("A" "C" "C")) => 250)
