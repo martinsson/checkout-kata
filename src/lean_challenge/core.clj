@@ -1,7 +1,9 @@
 (ns lean-challenge.core)
 
 (defn cost [fruit] 
-  ({"b" 150 "a" 100 "p" 100 "m" 100 "c" 75} fruit))
+  (if (empty? fruit)
+    0
+    ({"b" 150 "a" 100 "p" 100 "m" 100 "c" 75} fruit)))
 
 (defn csv-to-col [s]
   (seq (.split s ",")))

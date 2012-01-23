@@ -1,5 +1,6 @@
 (ns lean-challenge.test.core
   (:use [lean-challenge.core] :reload)
+  (:use [lean-challenge.main] :reload)
   (:use [midje.sweet]))
 
 (fact
@@ -23,3 +24,13 @@
       (basket-price '("a", "a" "m", "p" )) => 300)
 (fact 
   (csv-to-col "a,b,c") => '("a" "b" "c"))
+
+(fact "accepts empty fruit baskets"
+  (basket-price '()) => 0)
+
+(fact "it accepts data from command-line until there is an empty line"
+      (buy) => 0
+      (provided (read-line) =streams=> [""])
+      (buy) => 250
+      (provided (read-line) =streams=> ["p" "b" ""])
+      )

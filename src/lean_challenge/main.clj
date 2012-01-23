@@ -2,8 +2,10 @@
   (:use [lean-challenge.core] :reload))
 
 ; runs in repl : just enter an empty line and you're ready for the next customer
-(loop [item (read-line) items []]
-  (println (basket-price (concat (csv-to-col item) items)))
-  (if (empty? item)
-    item
-    (recur (read-line) (concat (csv-to-col item) items))))
+(defn buy [] 
+  (loop [item (read-line) items []]
+    (let [basket (concat (csv-to-col item) items)]
+		  (println (basket-price basket))
+		  (if (empty? item)
+		    (basket-price basket)
+		    (recur (read-line) basket)))))
