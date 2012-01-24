@@ -41,11 +41,11 @@
       (provided 
         (read-line) =streams=> ["a" "c" ""]
         (println "total: " 100) => anything :times 1
-        (println "total: " 175) => anything))
+        (println "total: " 175) => anything :times 1))
 
-(fact  "it accepts both a single item and comma separated items"
+(fact  "it accepts both a single item and comma separated items as input"
       (let [total (basket-price "p" "c" "b")] 
-        (buy) => total
+        (buy) => anything
 	      (provided 
 	        (read-line) =streams=> ["p,c" "b" ""]
 	        (println "total: " total) => anything  )))
