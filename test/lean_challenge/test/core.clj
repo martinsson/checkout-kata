@@ -28,20 +28,20 @@
 (fact "accepts empty fruit baskets"
   (basket-price ) => 0)
 
-(fact "exits when there is a newline"
+(facts "it exits when we enter an empty line"
+      (buy) => anything                    ;; il n'est pas important ce que renvoie la fonction buy
+      (provided 
+        (read-line) => "")                 ;; étant donnée que read-line renvoie chaîne vide // fin du premier test 
       (buy) => anything
       (provided 
-        (read-line) =streams=> [""])
-      (buy) => anything
-      (provided 
-        (read-line) =streams=> ["b" ""]))
+        (read-line) =streams=> ["b" ""]))  ;; étant donnée que read-line renvoie successivement "b" puis chaîne vide
 
 (fact "it prints the total for every line of input"
-      (buy) => anything
+      (buy) => anything                                ;; still not important what buy returns
       (provided 
-        (read-line) =streams=> ["a" "c" ""]
-        (println "total: " 100) => anything :times 1
-        (println "total: " 175) => anything :times 1))
+        (read-line) =streams=> ["a" "c" ""]           
+        (println "total: " 100) => anything :times 1   ;; after adding the "a" (apple) that cost 100 println should be called with "total: 100"
+        (println "total: " 175) => anything :times 1)) ;; after adding "c" (cherries) that cost 75 println should be called with "total: 175"
 
 (fact  "it accepts both a single item and comma separated items as input"
       (let [total (basket-price "p" "c" "b")] 
