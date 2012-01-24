@@ -39,7 +39,7 @@
 (fact "it prints the total for every line of input"
       (buy) => anything                                ;; still not important what buy returns
       (provided 
-        (read-line) =streams=> ["a" "c" ""]           
+        (read-line) =streams=> ["a" "c" ""]
         (println "total: " 100) => anything :times 1   ;; after adding the "a" (apple) that cost 100 println should be called with "total: 100"
         (println "total: " 175) => anything :times 1)) ;; after adding "c" (cherries) that cost 75 println should be called with "total: 175"
 
