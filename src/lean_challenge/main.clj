@@ -4,8 +4,9 @@
 ; runs in repl : just enter an empty line and you're ready for the next customer
 (defn buy [] 
   (loop [item (read-line) items []]
-    (let [basket (concat (csv-to-col item) items)]
-		  (println (basket-price basket))
+    (let [basket (concat (csv-to-col item) items)
+          price (apply basket-price basket)]
+		  (println "total: " price)
 		  (if (empty? item)
-		    (basket-price basket)
+		    price
 		    (recur (read-line) basket)))))

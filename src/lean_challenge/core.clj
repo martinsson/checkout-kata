@@ -20,7 +20,6 @@
     (* 100 (lots-of 4 fruits "p" "a" "m"))
     (* 200 (quot (count fruits) 5))))
 
-(defn basket-price
-  [fruits]
+(defn basket-price [& fruits]
   (- (reduce + (map cost fruits)) 
      (discount fruits)))
